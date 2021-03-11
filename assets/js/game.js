@@ -127,7 +127,77 @@ var fight = function(enemyName) {
   }
 };
 
+// go to shop between battles function
+var shop = function() {
+  // ask player what they'd like to do
+  var shopOptionPrompt = window.prompt(
+    'Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one "REFILL", "UPGRADE", or "LEAVE" to make a choice. ' + playerMoney
+  );
 
+  // use switch case to carry out action
+  switch (shopOptionPrompt) {
+    case 'refill':
+      if (playerMoney >=4) {
+      
+      window.alert("Refilling player's health by 20 for 4 dollars.");
+
+      // increase health and decrease money
+      playerHealth = playerHealth+20;
+      playerMoney = playerMoney-4;
+      break;
+      }
+      else {
+        window.alert("You don't have enough money!");
+      }
+      break;
+
+    case 'REFILL':
+      if (playerMoney>=4){
+      window.alert("Refilling player's health by 20 for 4 dollars.");
+      playerHealth + 20;
+      playerMoney - 4;
+      break;
+      }
+      else {
+        window.alert("You don't have enough money!");
+      }
+    case 'upgrade':
+      if (playerMoney>=4){
+      window.alert("Upgrading player's attack by 6 for 4 dollars.");
+
+      // increase attack and decrease money
+      playerAttack = playerAttack + 6;
+      playerMoney=playerMoney-4;
+      break;
+      } 
+      else {
+        window.alert("You don't have enough money!");
+      }
+    case 'UPGRADE':
+      if (playerMoney>=4){
+      
+      window.alert("Upgrading player's attack by 6 for 4 dollars.");
+      playerAttack + 6;
+      playerMoney - 4;
+      break;
+      }
+      else {
+        window.alert("You don't have enough money!")
+      }
+    case 'leave':
+      window.alert("Leaving the store.");
+      
+      // do nothing, so function end
+      break;
+    case 'LEAVE':
+      window.alert('Leaving the store.');
+      break;
+    default:
+      window.alert('You did not pick a valid option. Try again.');
+      shop();
+      break;
+  }
+};
 
 //start the game when the page loads
 startGame();
