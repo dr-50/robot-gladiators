@@ -119,13 +119,22 @@ var endGame = function() {
 
 // fight function (now with parameter for enemy's name)
 var fight = function(enemy) {
+     // ask player if they'd like to fight or run
+     var fightOrSkip = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+
+
+         // Conditional Recursive Function Call
+         if (fightOrSkip === "" || fightOrSkip === null) {
+          window.alert("You need to provide a valid answer! Please try again.");
+          return fightOrSkip()
+        }
   
   while (playerInfo.health > 0 && enemy.health > 0) {
-    // ask player if they'd like to fight or run
-    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
+
+ 
 
     // if player picks "skip" confirm and then stop the loop
-    if (promptFight === 'skip' || promptFight === 'SKIP') {
+    if (fightOrSkip === 'skip' || fightOrSkip === 'SKIP') {
       // confirm player wants to skip
       var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
