@@ -134,17 +134,20 @@ var fight = function(enemy) {
  
 
     // if player picks "skip" confirm and then stop the loop
-    if (fightOrSkip === 'skip' || fightOrSkip === 'SKIP') {
+    if (fightOrSkip.toLowerCase === 'skip') {
       // confirm player wants to skip
-      var confirmSkip = window.confirm("Are you sure you'd like to quit?");
+      if (fightOrSkip()) {
+        //if true, leave fight by breaking loop
+        break;
+      }
 
       // if yes (true), leave fight
       if (confirmSkip) {
         window.alert(playerInfo.name + ' has decided to skip this fight. Goodbye!');
         // subtract money from playerMoney for skipping
-        playerMoney = playerMoney - 10;
-        shop();
-        break;
+        playerInfo.money = Math.max(0, playerInfo.money - 10);
+        
+        return true;
       }
     }
 
