@@ -119,6 +119,17 @@ var endGame = function() {
 
 // fight function (now with parameter for enemy's name)
 var fight = function(enemy) {
+  var isPlayerTurn=true;
+  if (Math.random() > 0.5) {
+    isPlayerTurn=false;
+  }
+
+  // if it's the player-robot's turn
+
+  //if it's not the player-robot's turn
+
+  //after the turn is done switch turns for the enxt bout of fight
+  
      // ask player if they'd like to fight or run
      var fightOrSkip = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
@@ -130,7 +141,13 @@ var fight = function(enemy) {
         }
   
   while (playerInfo.health > 0 && enemy.health > 0) {
-
+    if (isPlayerTurn) {
+      // ask player if they'd like to fight or skip using fightOrSkip function
+      if (fightOrSkip()) {
+        // if true, leave fight by breaking loop
+        break;
+      }
+    }
  
 
     // if player picks "skip" confirm and then stop the loop
@@ -197,6 +214,8 @@ var fight = function(enemy) {
     } else {
       window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
     }
+    //switch turn order for next round
+    isPlayerTurn = !isPlayerTurn;
   }
 };
 
